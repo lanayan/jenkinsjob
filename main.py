@@ -1,4 +1,3 @@
-
 import qrcode
 import base64
 from flask import Flask
@@ -6,6 +5,14 @@ from flask import request
 from io import BytesIO
 
 app = Flask(__name__)
+
+@app.route("/")
+def root():
+   return '''<form action="/qr" method="GET">
+      <input type="text" name="msg" placeholder="Enter text"/>
+      <input type="submit" value="QR-code"/>
+   </form>'''
+
 
 @app.route("/qr")
 def qr():
